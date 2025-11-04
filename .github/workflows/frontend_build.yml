@@ -20,10 +20,10 @@ jobs:
 
       - name: Install frontend dependencies
         run: |
-          cd frontend
+          cd admin-dashboard
           npm ci
 
       - name: Build frontend
         run: |
-          cd frontend
+          cd admin-dashboard
           npm run build
