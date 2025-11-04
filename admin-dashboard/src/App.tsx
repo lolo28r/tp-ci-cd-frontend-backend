@@ -12,38 +12,38 @@ import GameList from "./pages/GameList";
 
 export default function App() {
   return (
-<Router>
-  <Routes>
-    {/* Routes publiques */}
-    <Route path="/login" element={<Login />} />
-    {/* <Route path="/register" element={<Register />} /> */}
+    <Router>
+      <Routes>
+        {/* Routes publiques */}
+        <Route path="/login" element={<Login />} />
+        {<Route path="/register" element={<Register />} />}
 
-    {/* Routes protégées */}
-    {localStorage.getItem("token") ? (
-      <Route
-        path="/"
-        element={
-          <div className="flex">
-            <Sidebar />
-            <main className="ml-60 w-full bg-gray-50 min-h-screen">
-              <Topbar />
-              <Outlet />
-            </main>
-          </div>
-        }
-      >
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="users" element={<Users />} />
-        <Route path="games" element={<Games />} />
-        <Route path="reviews" element={<Review />} />
-        <Route path="genres" element={<Genres />} />
-        <Route path="gamelist" element={<GameList />} />
+        {/* Routes protégées */}
+        {localStorage.getItem("token") ? (
+          <Route
+            path="/"
+            element={
+              <div className="flex">
+                <Sidebar />
+                <main className="ml-60 w-full bg-gray-50 min-h-screen">
+                  <Topbar />
+                  <Outlet />
+                </main>
+              </div>
+            }
+          >
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="users" element={<Users />} />
+            <Route path="games" element={<Games />} />
+            <Route path="reviews" element={<Review />} />
+            <Route path="genres" element={<Genres />} />
+            <Route path="gamelist" element={<GameList />} />
 
-      </Route>
-    ) : (
-      <Route path="/*" element={<Navigate to="/login" />} />
-    )}
-  </Routes>
-</Router>
+          </Route>
+        ) : (
+          <Route path="/*" element={<Navigate to="/login" />} />
+        )}
+      </Routes>
+    </Router>
   );
 }
